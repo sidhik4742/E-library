@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, HashRouter, Route, Switch} from 'react-router-dom';
 import logo from './logo.svg';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -97,229 +97,238 @@ function App() {
   console.log('main root');
 
   return (
-    <div className="mainPage">
-      <Router>
-      <div> hello world </div>
-        {/* <Switch>
-          <Route path="/admin" exact>
-            <AdminLogin />
-          </Route>
-          <Route path="/admin/dashboard/" exact>
-            <AdminDashboard
-              adminchooseContent={adminchooseContent}
-              setAdminChooseContent={setAdminChooseContent}
-              adminDashboardContent={adminDashboardContent}
-              setAdminDashboardContent={setAdminDashboardContent}
-              setDealerDatas={setDealerDatas}
-              dealerDatas={dealerDatas}
-            />
-          </Route>
-          <Route path="/admin/dashboard/dealerlist" exact>
-            <DealerDashboardTable
-              dealerDatas={dealerDatas}
-              setDealerDatas={setDealerDatas}
-              adminDashboardContent={adminDashboardContent}
-              setAdminChooseContent={setAdminChooseContent}
-              setUserStatus={setUserStatus}
-              userStatus={userStatus}
-            />
-          </Route>
-          <Route path="/admin/dashboard/userslist" exact>
-            <UserDashboardTable
-              adminDashboardContent={adminDashboardContent}
-              setAdminDashboardContent={setAdminDashboardContent}
-              setAdminChooseContent={setAdminChooseContent}
-              setUserStatus={setUserStatus}
-              userStatus={userStatus}
-            />
-          </Route>
-          <Route path="/admin/dashboard/category" exact>
-            <CategoryManagement
-              adminDashboardContent={adminDashboardContent}
-              setAdminDashboardContent={setAdminDashboardContent}
-              setAdminChooseContent={setAdminChooseContent}
-              setUserStatus={setUserStatus}
-              userStatus={userStatus}
-            />
-          </Route>
-          <Route path="/admin/dashboard/report" exact>
-            <Report
-              adminDashboardContent={adminDashboardContent}
-              setAdminDashboardContent={setAdminDashboardContent}
-              setAdminChooseContent={setAdminChooseContent}
-              setUserStatus={setUserStatus}
-              userStatus={userStatus}
-              orderDetails={orderDetails}
-              setOrderDetails={setOrderDetails}
-              setFilterData={setFilterData}
-              filterData={filterData}
-            />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/dealer" exact>
-            <DealerLogin />
-          </Route>
-          <Route path="/dealer/signup" exact>
-            <DealerSignup />
-          </Route>
-          <Route path="/dealer/dashboard" exact>
-            <DealerDashboard
-              mainUrl={mainUrl}
-              setOrderDetails={setOrderDetails}
-              orderDetails={orderDetails}
-              dealerName={dealerName}
-              setDealerName={setDealerName}
-              dashboardContent={dashboardContent}
-              setChooseContent={setChooseContent}
-              chooseContent={chooseContent}
-              dealerLoginCrentials={dealerLoginCrentials}
-              setdealerLoginCrentials={setdealerLoginCrentials}
-            />
-          </Route>
-          <Route path="/dealer/dashboard/orderhistory" exact>
-            <OrderHistory
-              mainUrl={mainUrl}
-              setOrderDetails={setOrderDetails}
-              orderDetails={orderDetails}
-              dealerName={dealerName}
-              setDealerName={setDealerName}
-              dashboardContent={dashboardContent}
-              setChooseContent={setChooseContent}
-              chooseContent={chooseContent}
-              dealerLoginCrentials={dealerLoginCrentials}
-              setdealerLoginCrentials={setdealerLoginCrentials}
-            />
-          </Route>
-          <Route path="/dealer/dashboard/productlist" exact>
-            <ProductDashboardTable
-              mainUrl={mainUrl}
-              setOrderDetails={setOrderDetails}
-              orderDetails={orderDetails}
-              dealerName={dealerName}
-              setDealerName={setDealerName}
-              dashboardContent={dashboardContent}
-              setChooseContent={setChooseContent}
-              chooseContent={chooseContent}
-              dealerLoginCrentials={dealerLoginCrentials}
-              setdealerLoginCrentials={setdealerLoginCrentials}
-            />
-          </Route>
-          <Route path="/dealer/dashboard/offers" exact>
-            <Offers
-              dealerName={dealerName}
-              setDealerName={setDealerName}
-              dashboardContent={dashboardContent}
-              setChooseContent={setChooseContent}
-              dealerLoginCrentials={dealerLoginCrentials}
-              mainUrl={mainUrl}
-              dealerLoginCrentials={dealerLoginCrentials}
-              setdealerLoginCrentials={setdealerLoginCrentials}
-            />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/" exact>
-            <CustomerLanding
-              customerName={customerName}
-              mainUrl={mainUrl}
-              setCustomerName={setCustomerName}
-              setCartStatus={setCartStatus}
-              cartStatus={cartStatus}
-              customerLoginStatus={customerLoginStatus}
-              setCustomerLoginStatus={setCustomerLoginStatus}
-              customerPageStatus={customerPageStatus}
-              setCustomerPageStatus={setCustomerPageStatus}
-              setCustomerAccountStatus={setCustomerAccountStatus}
-              viewBookDetails={viewBookDetails}
-              setViewBookDetails={setViewBookDetails}
-              setCartCount={setCartCount}
-              cartCount={cartCount}
-            />
-          </Route>
-          <Route path="/viewcart" exact>
-            <ViewCart
-              mainUrl={mainUrl}
-              cartDetailsCpy={cartDetailsCpy}
-              setCartDetailsCpy={setCartDetailsCpy}
-              totalAmount={totalAmount}
-              setTotalAmount={setTotalAmount}
-              viewBookDetails={viewBookDetails}
-              setViewBookDetails={setViewBookDetails}
-              customerLoginStatus={customerLoginStatus}
-              customerName={customerName}
-              setCustomerAccountStatus={setCustomerAccountStatus}
-            />
-          </Route>
-          <Route path="/checkout" exact>
-            <Chekout
-              cartDetailsCpy={cartDetailsCpy}
-              setCartDetailsCpy={setCartDetailsCpy}
-              shipAddress={shipAddress}
-              setShipAddress={setShipAddress}
-              setOrderDateAndPaymentMethod={setOrderDateAndPaymentMethod}
-              orderDateAndPaymentMethod={orderDateAndPaymentMethod}
-            />
-          </Route>
-          <Route path="/payMethod" exact>
-            <PaymentMethod
-              paymentOption={paymentOption}
-              setPaymentOptions={setPaymentOptions}
-              setOrderDateAndPaymentMethod={setOrderDateAndPaymentMethod}
-              orderDateAndPaymentMethod={orderDateAndPaymentMethod}
-            />
-          </Route>
-          <Route path="/placeOrder" exact>
-            <PlaceOrder
-              shipAddress={shipAddress}
-              setShipAddress={setShipAddress}
-              cartDetailsCpy={cartDetailsCpy}
-              paymentOption={paymentOption}
-              setPaymentOptions={setPaymentOptions}
-              mainUrl={mainUrl}
-              totalAmount={totalAmount}
-              setTotalAmount={setTotalAmount}
-              setOrderDateAndPaymentMethod={setOrderDateAndPaymentMethod}
-              orderDateAndPaymentMethod={orderDateAndPaymentMethod}
-              setCustomerPageStatus={setCustomerPageStatus}
-              setAccountVsOrder={setAccountVsOrder}
-            />
-          </Route>
-          <Route path="/accountInfo" exact>
-            <AccountInfo
-              customerLoginStatus={customerLoginStatus}
-              setCustomerLoginStatus={setCustomerLoginStatus}
-              customerPageStatus={customerPageStatus}
-              setCustomerPageStatus={setCustomerPageStatus}
-              customerName={customerName}
-              cartStatus={cartStatus}
-              setCartStatus={setCartStatus}
-              customerAccountStatus={customerAccountStatus}
-              setCustomerAccountStatus={setCustomerAccountStatus}
-              mainUrl={mainUrl}
-              viewBookDetails={viewBookDetails}
-              accountVsOrder={accountVsOrder}
-              setAccountVsOrder={setAccountVsOrder}
-            />
-          </Route>
-          <Route path="/login" exact>
-            <CustomerLogin setCustomerName={setCustomerName} />
-          </Route>
-          <Route path="/signup" exact>
-            <CustomerSignup
-              userSignUpDetails={userSignUpDetails}
-              setUserSignUpDetails={setUserSignUpDetails}
-            />
-          </Route>
-          <Route path="/signup/ship-address">
-            <CustomerShipAddress
-              userSignUpDetails={userSignUpDetails}
-              setUserSignUpDetails={setUserSignUpDetails}
-            />
-          </Route>
-        </Switch> */}
-      </Router>
-    </div>
+    <HashRouter>
+      <Route render={(location)=>{
+        return(
+          <Switch location={location.location} >
+            <Route path="/" exact component={AdminLogin} />
+          </Switch>
+        )
+      }} />
+    </HashRouter>
+    // <div className="mainPage">
+    //   <Router>
+      
+    //     {/* <Switch>
+    //       <Route path="/admin" exact>
+    //         <AdminLogin />
+    //       </Route>
+    //       <Route path="/admin/dashboard/" exact>
+    //         <AdminDashboard
+    //           adminchooseContent={adminchooseContent}
+    //           setAdminChooseContent={setAdminChooseContent}
+    //           adminDashboardContent={adminDashboardContent}
+    //           setAdminDashboardContent={setAdminDashboardContent}
+    //           setDealerDatas={setDealerDatas}
+    //           dealerDatas={dealerDatas}
+    //         />
+    //       </Route>
+    //       <Route path="/admin/dashboard/dealerlist" exact>
+    //         <DealerDashboardTable
+    //           dealerDatas={dealerDatas}
+    //           setDealerDatas={setDealerDatas}
+    //           adminDashboardContent={adminDashboardContent}
+    //           setAdminChooseContent={setAdminChooseContent}
+    //           setUserStatus={setUserStatus}
+    //           userStatus={userStatus}
+    //         />
+    //       </Route>
+    //       <Route path="/admin/dashboard/userslist" exact>
+    //         <UserDashboardTable
+    //           adminDashboardContent={adminDashboardContent}
+    //           setAdminDashboardContent={setAdminDashboardContent}
+    //           setAdminChooseContent={setAdminChooseContent}
+    //           setUserStatus={setUserStatus}
+    //           userStatus={userStatus}
+    //         />
+    //       </Route>
+    //       <Route path="/admin/dashboard/category" exact>
+    //         <CategoryManagement
+    //           adminDashboardContent={adminDashboardContent}
+    //           setAdminDashboardContent={setAdminDashboardContent}
+    //           setAdminChooseContent={setAdminChooseContent}
+    //           setUserStatus={setUserStatus}
+    //           userStatus={userStatus}
+    //         />
+    //       </Route>
+    //       <Route path="/admin/dashboard/report" exact>
+    //         <Report
+    //           adminDashboardContent={adminDashboardContent}
+    //           setAdminDashboardContent={setAdminDashboardContent}
+    //           setAdminChooseContent={setAdminChooseContent}
+    //           setUserStatus={setUserStatus}
+    //           userStatus={userStatus}
+    //           orderDetails={orderDetails}
+    //           setOrderDetails={setOrderDetails}
+    //           setFilterData={setFilterData}
+    //           filterData={filterData}
+    //         />
+    //       </Route>
+    //     </Switch>
+    //     <Switch>
+    //       <Route path="/dealer" exact>
+    //         <DealerLogin />
+    //       </Route>
+    //       <Route path="/dealer/signup" exact>
+    //         <DealerSignup />
+    //       </Route>
+    //       <Route path="/dealer/dashboard" exact>
+    //         <DealerDashboard
+    //           mainUrl={mainUrl}
+    //           setOrderDetails={setOrderDetails}
+    //           orderDetails={orderDetails}
+    //           dealerName={dealerName}
+    //           setDealerName={setDealerName}
+    //           dashboardContent={dashboardContent}
+    //           setChooseContent={setChooseContent}
+    //           chooseContent={chooseContent}
+    //           dealerLoginCrentials={dealerLoginCrentials}
+    //           setdealerLoginCrentials={setdealerLoginCrentials}
+    //         />
+    //       </Route>
+    //       <Route path="/dealer/dashboard/orderhistory" exact>
+    //         <OrderHistory
+    //           mainUrl={mainUrl}
+    //           setOrderDetails={setOrderDetails}
+    //           orderDetails={orderDetails}
+    //           dealerName={dealerName}
+    //           setDealerName={setDealerName}
+    //           dashboardContent={dashboardContent}
+    //           setChooseContent={setChooseContent}
+    //           chooseContent={chooseContent}
+    //           dealerLoginCrentials={dealerLoginCrentials}
+    //           setdealerLoginCrentials={setdealerLoginCrentials}
+    //         />
+    //       </Route>
+    //       <Route path="/dealer/dashboard/productlist" exact>
+    //         <ProductDashboardTable
+    //           mainUrl={mainUrl}
+    //           setOrderDetails={setOrderDetails}
+    //           orderDetails={orderDetails}
+    //           dealerName={dealerName}
+    //           setDealerName={setDealerName}
+    //           dashboardContent={dashboardContent}
+    //           setChooseContent={setChooseContent}
+    //           chooseContent={chooseContent}
+    //           dealerLoginCrentials={dealerLoginCrentials}
+    //           setdealerLoginCrentials={setdealerLoginCrentials}
+    //         />
+    //       </Route>
+    //       <Route path="/dealer/dashboard/offers" exact>
+    //         <Offers
+    //           dealerName={dealerName}
+    //           setDealerName={setDealerName}
+    //           dashboardContent={dashboardContent}
+    //           setChooseContent={setChooseContent}
+    //           dealerLoginCrentials={dealerLoginCrentials}
+    //           mainUrl={mainUrl}
+    //           dealerLoginCrentials={dealerLoginCrentials}
+    //           setdealerLoginCrentials={setdealerLoginCrentials}
+    //         />
+    //       </Route>
+    //     </Switch>
+    //     <Switch>
+    //       <Route path="/" exact>
+    //         <CustomerLanding
+    //           customerName={customerName}
+    //           mainUrl={mainUrl}
+    //           setCustomerName={setCustomerName}
+    //           setCartStatus={setCartStatus}
+    //           cartStatus={cartStatus}
+    //           customerLoginStatus={customerLoginStatus}
+    //           setCustomerLoginStatus={setCustomerLoginStatus}
+    //           customerPageStatus={customerPageStatus}
+    //           setCustomerPageStatus={setCustomerPageStatus}
+    //           setCustomerAccountStatus={setCustomerAccountStatus}
+    //           viewBookDetails={viewBookDetails}
+    //           setViewBookDetails={setViewBookDetails}
+    //           setCartCount={setCartCount}
+    //           cartCount={cartCount}
+    //         />
+    //       </Route>
+    //       <Route path="/viewcart" exact>
+    //         <ViewCart
+    //           mainUrl={mainUrl}
+    //           cartDetailsCpy={cartDetailsCpy}
+    //           setCartDetailsCpy={setCartDetailsCpy}
+    //           totalAmount={totalAmount}
+    //           setTotalAmount={setTotalAmount}
+    //           viewBookDetails={viewBookDetails}
+    //           setViewBookDetails={setViewBookDetails}
+    //           customerLoginStatus={customerLoginStatus}
+    //           customerName={customerName}
+    //           setCustomerAccountStatus={setCustomerAccountStatus}
+    //         />
+    //       </Route>
+    //       <Route path="/checkout" exact>
+    //         <Chekout
+    //           cartDetailsCpy={cartDetailsCpy}
+    //           setCartDetailsCpy={setCartDetailsCpy}
+    //           shipAddress={shipAddress}
+    //           setShipAddress={setShipAddress}
+    //           setOrderDateAndPaymentMethod={setOrderDateAndPaymentMethod}
+    //           orderDateAndPaymentMethod={orderDateAndPaymentMethod}
+    //         />
+    //       </Route>
+    //       <Route path="/payMethod" exact>
+    //         <PaymentMethod
+    //           paymentOption={paymentOption}
+    //           setPaymentOptions={setPaymentOptions}
+    //           setOrderDateAndPaymentMethod={setOrderDateAndPaymentMethod}
+    //           orderDateAndPaymentMethod={orderDateAndPaymentMethod}
+    //         />
+    //       </Route>
+    //       <Route path="/placeOrder" exact>
+    //         <PlaceOrder
+    //           shipAddress={shipAddress}
+    //           setShipAddress={setShipAddress}
+    //           cartDetailsCpy={cartDetailsCpy}
+    //           paymentOption={paymentOption}
+    //           setPaymentOptions={setPaymentOptions}
+    //           mainUrl={mainUrl}
+    //           totalAmount={totalAmount}
+    //           setTotalAmount={setTotalAmount}
+    //           setOrderDateAndPaymentMethod={setOrderDateAndPaymentMethod}
+    //           orderDateAndPaymentMethod={orderDateAndPaymentMethod}
+    //           setCustomerPageStatus={setCustomerPageStatus}
+    //           setAccountVsOrder={setAccountVsOrder}
+    //         />
+    //       </Route>
+    //       <Route path="/accountInfo" exact>
+    //         <AccountInfo
+    //           customerLoginStatus={customerLoginStatus}
+    //           setCustomerLoginStatus={setCustomerLoginStatus}
+    //           customerPageStatus={customerPageStatus}
+    //           setCustomerPageStatus={setCustomerPageStatus}
+    //           customerName={customerName}
+    //           cartStatus={cartStatus}
+    //           setCartStatus={setCartStatus}
+    //           customerAccountStatus={customerAccountStatus}
+    //           setCustomerAccountStatus={setCustomerAccountStatus}
+    //           mainUrl={mainUrl}
+    //           viewBookDetails={viewBookDetails}
+    //           accountVsOrder={accountVsOrder}
+    //           setAccountVsOrder={setAccountVsOrder}
+    //         />
+    //       </Route>
+    //       <Route path="/login" exact>
+    //         <CustomerLogin setCustomerName={setCustomerName} />
+    //       </Route>
+    //       <Route path="/signup" exact>
+    //         <CustomerSignup
+    //           userSignUpDetails={userSignUpDetails}
+    //           setUserSignUpDetails={setUserSignUpDetails}
+    //         />
+    //       </Route>
+    //       <Route path="/signup/ship-address">
+    //         <CustomerShipAddress
+    //           userSignUpDetails={userSignUpDetails}
+    //           setUserSignUpDetails={setUserSignUpDetails}
+    //         />
+    //       </Route>
+    //     </Switch> */}
+    //   </Router>
+    // </div>
   );
 }
 
