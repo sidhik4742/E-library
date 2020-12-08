@@ -99,7 +99,8 @@ function App() {
   return (
     <div className="mainPage">
       <Router>
-        <Switch>
+      <div> hello world </div>
+        {/* <Switch>
           <Route path="/admin" exact>
             <AdminLogin />
           </Route>
@@ -316,7 +317,7 @@ function App() {
               setUserSignUpDetails={setUserSignUpDetails}
             />
           </Route>
-        </Switch>
+        </Switch> */}
       </Router>
     </div>
   );
